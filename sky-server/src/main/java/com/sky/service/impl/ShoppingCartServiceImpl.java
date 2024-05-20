@@ -75,6 +75,37 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 
    }
+    /**
+     * 删除购物车方法
+     * @param shoppingCartDTO
+     */
+    public void subShoppingCart(ShoppingCartDTO shoppingCartDTO){
+        ShoppingCart shoppingCart = new ShoppingCart();
+        Long dishId = shoppingCartDTO.getDishId();
+        Long userId = BaseContext.getCurrentId();
+        if(dishId != null){
+            //删除添加的是菜品
+            //Dish dish = dishMapper.getById(dishId);
+            shoppingCart = shoppingCartMapper.getByDishIdAndUserId(dishId,userId);
+
+        }else{
+            //本次删除是套餐
+            Long setmealId = shoppingCartDTO.getSetmealId();
+            //Setmeal setmeal = setmealMapper.getById(setmealId);
+            shoppingCart = shoppingCartMapper.getBySetMealIdAndUserId(setmealId,userId);
+
+        }
+        //如果数量大于1 数量减一
+        if(shoppingCart.getNumber()>1){
+            shoppingCart.setNumber(shoppingCart.getNumber()-1);
+            shoppingCartMapper.updateNumberById(shoppingCart);
+        }else{
+            //如果数量为一 删除购物车商品
+            shoppingCartMapper.deleteById(shoppingCart.getId());
+
+        }
+
+    }
 
     /**
      * 查看购物车
