@@ -10,9 +10,7 @@
 
 ![image](https://github.com/hbaiqiao/sky-take-out/assets/79921484/adb1f5ce-8497-413c-b32b-6e4f38f8aa43)
 
-<h3>业务流程</h3>
 
-![image](https://github.com/hbaiqiao/sky-take-out/assets/79921484/206e91ca-1bdc-463a-a554-d2ab86bef8ad)
 
 <h2>二、项目要点</h2>
 <h4>1、 使用标准化开发流程</h4>
